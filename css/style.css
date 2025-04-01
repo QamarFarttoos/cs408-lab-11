@@ -1,4 +1,77 @@
-h1{
-  border-color: #d3e644;
-  border-style: dashed;
+/* General Page Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Header Styling */
+h1 {
+  color: #0073e6;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+/* Button Styling */
+button {
+  background-color: #0073e6;
+  color: white;
+  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 15px 0;
+  transition: 0.3s ease-in-out;
+  width: 250px;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+/* Paragraph Styling */
+p {
+  font-size: 18px;
+  margin: 10px auto;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* API Response Box */
+#lambda-info {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 50%;
+  min-height: 50px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+/* Section Styling */
+section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 50%;
+  text-align: center;
+}
+
+/* Horizontal Rule Styling */
+hr {
+  border: none;
+  height: 2px;
+  background-color: #0073e6;
+  width: 50%;
+  margin: 20px auto;
 }
