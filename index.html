@@ -1,63 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Test AWS Lambda</title>
-    <meta name="description" content="">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <title>Crazy AWS Lambda Fun! 🎭</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Simple Demo for PUT, GET, and DELETE</h1>
-    <p id="lambda-info">
-        <!-- loaded with AJAX -->
-    </p>
 
-    <hr>
-    <button id="send-data">Send Data</button>
-    <p>Sends an example JSON object to the server with id 11111</p>
+    <h1>🚀 Crazy Demo for PUT, GET, and DELETE! 🤪</h1>
+
+    <section>
+        <button id="send-data">🔥 Send Data 🔥</button>
+        <p>🚀 Sends a JSON object to AWS with ID <b>6666666</b></p>
+    </section>
+
+    <section>
+        <button id="load-data">📦 Load Data 📦</button>
+        <p>🔍 Fetches mysterious data from the server! What could it be? 🤔</p>
+        <div id="lambda-info">💡 Data will appear here... or maybe a cat meme? 🐱</div>
+    </section>
+
+    <section>
+        <button id="delete-data">💥 Delete Data 💥</button>
+        <p>🚫 Deletes data with ID <b>6666666</b> from the server! 😈</p>
+    </section>
+
     <script>
+        const apiUrl = "https://5vuqvsqv24.execute-api.us-east-2.amazonaws.com/items"; // Your actual AWS API URL
+
+        // Send Data (PUT request)
         document.getElementById("send-data").onclick = function () {
             let xhr = new XMLHttpRequest();
-            xhr.open("PUT", "Your Lambda here");
+            xhr.open("PUT", apiUrl);
             xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onload = function () {
+                alert("🔥 Data sent successfully! Response: " + xhr.responseText);
+            };
+
+            xhr.onerror = function () {
+                alert("🚨 Oh no! Something went wrong.");
+            };
+
             xhr.send(JSON.stringify({
                 "id": "6666666",
                 "price": 19,
                 "name": "test put value"
             }));
-        }
-    </script>
+        };
 
-    <button id="load-data">Load Data</button>
-    <p>Loads data from the server</p>
-    <script>
+        // Load Data (GET request)
         document.getElementById("load-data").onclick = function () {
             let lambda = document.getElementById("lambda-info");
             let xhr = new XMLHttpRequest();
-            xhr.addEventListener("load", function () {
-                lambda.innerHTML = xhr.response;
-            });
-            xhr.open("GET", "Your Lambda here");
+
+            xhr.open("GET", apiUrl, true);
+
+            xhr.onload = function () {
+                lambda.innerHTML = `<pre>${xhr.responseText}</pre>`;
+            };
+
+            xhr.onerror = function () {
+                lambda.innerHTML = "❌ Failed to load data!";
+            };
+
             xhr.send();
-        }
+        };
 
-    </script>
-
-    <hr>
-    <button id="delete-data">Delete Data</button>
-    <p>Deletes a JSON object from the server with 11111</p>
-    <script>
+        // Delete Data (DELETE request)
         document.getElementById("delete-data").onclick = function () {
             let xhr = new XMLHttpRequest();
-            xhr.open("DELETE", "Your Lambda here");
+            xhr.open("DELETE", apiUrl + "/6666666"); // Assuming your API deletes by ID
             xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onload = function () {
+                alert("💀 Data deleted! Server says: " + xhr.responseText);
+            };
+
+            xhr.onerror = function () {
+                alert("🤯 Could not delete data!");
+            };
+
             xhr.send();
-        }
+        };
     </script>
+
 </body>
 
 </html>
